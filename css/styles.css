@@ -1,0 +1,1192 @@
+/* Estilos Personalizados Minimalistas */
+/* Tailwind CSS se carga via CDN en el HTML */
+/* Variables de color - Paleta LEGAL AIR */
+:root {
+    --black: #1a1a1a;
+    --black-soft: #2d2d2d;
+    --lead: #5a5a5a;
+    --lead-light: #8a8a8a;
+    --lead-soft: #2c2c2c;
+    /* Colores primarios - Azul aeronáutico profesional */
+    --primary-color: #003d82;
+    --primary-light: #0056b3;
+    --primary-soft: #e6f0fa;
+    --primary-dark: #002d5f;
+    --accent-color: #0066cc;
+    --accent-light: #3385d6;
+    /* Colores secundarios */
+    --secondary-color: #1e3a5f;
+    --secondary-light: #2d4d73;
+    --white: #ffffff;
+    --white-soft: #fafafa;
+    --sidebar-width: 300px;
+    --transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-fast: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-smooth: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    --transition-bounce: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Reset y Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    color: var(--black);
+    line-height: 1.7;
+    overflow-x: hidden;
+    background-color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+}
+
+body.splash-active {
+    overflow: hidden;
+}
+
+/* Splash Screen */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 1;
+    transition: opacity 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.splash-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.splash-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.splash-logo {
+    max-width: 700px;
+    width: 90%;
+    max-height: 90vh;
+    height: auto;
+    object-fit: contain;
+    animation: logoFadeIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes logoFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Overlay oscuro cuando el sidebar está abierto */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    backdrop-filter: blur(2px);
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Navbar Lateral Minimalista - Overlay */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: var(--sidebar-width);
+    background: var(--black);
+    color: var(--white);
+    padding: 3rem 0;
+    transform: translateX(-100%);
+    transition: var(--transition);
+    z-index: 1000;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    overflow-y: auto;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+.sidebar-header {
+    padding: 0 2.5rem 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.logo-img {
+    width: 180px;
+    height: auto;
+    margin: 0 auto 1.5rem;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-header h2 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-menu li {
+    margin: 0.25rem 0;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 1rem 2.5rem;
+    color: rgba(205, 205, 205, 0.8);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    border-left: 2px solid transparent;
+    font-weight: 300;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-menu a:hover {
+    color: var(--white);
+    background: rgba(0, 61, 130, 0.3);
+    border-left: 2px solid var(--accent-color);
+    padding-left: 2.8rem;
+}
+
+.sidebar-menu a.active {
+    color: var(--accent-color);
+    border-left: 2px solid var(--accent-color);
+    background: rgba(0, 102, 204, 0.2);
+}
+
+/* Botón Toggle Menu Minimalista */
+.menu-toggle {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    z-index: 1002;
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 16px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    backdrop-filter: blur(10px);
+    font-weight: 300;
+}
+
+.menu-toggle:hover {
+    background: var(--black-soft);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.menu-toggle.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(0.8);
+}
+
+/* Contenido Principal - Sin desplazamiento */
+.main-content {
+    margin-left: 0;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Secciones */
+.section {
+    padding: 6rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    color: var(--black);
+    font-weight: 200;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: var(--accent-color);
+}
+
+/* Hero Section Minimalista */
+.hero-section {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Difuminado sutil de la imagen de fondo */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Capa oscura para mejorar legibilidad */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.hero-content h1 span {
+    display: inline-block;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: var(--accent-light);
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.hero-subtitle span {
+    display: inline-block;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 400;
+    line-height: 1.9;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.4);
+    animation: fadeInUp 1.5s ease 2s both;
+}
+
+/* Información Section */
+.info-section {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Difuminado sutil de la imagen de fondo */
+.info-section::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Capa oscura para mejorar legibilidad */
+.info-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.info-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.info-content {
+    margin-bottom: 3rem;
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1.5s cubic-bezier(0.23, 1, 0.32, 1) 0.5s forwards;
+}
+
+.info-content p {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.info-content p:nth-child(1) {
+    animation-delay: 1s;
+}
+
+.info-content p:nth-child(2) {
+    animation-delay: 1.5s;
+}
+
+.info-content p {
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 400;
+    line-height: 2;
+    text-align: justify;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.info-section .section-title {
+    color: var(--white);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.info-section .section-title::after {
+    background: var(--accent-light);
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    background: var(--white-soft);
+    transition: var(--transition);
+    height: 350px;
+    border: 1px solid var(--lead-soft);
+}
+
+.image-container:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0, 102, 204, 0.2);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease, opacity 0.8s ease;
+    animation: float 10s ease-in-out infinite;
+    cursor: pointer;
+    filter: grayscale(20%);
+}
+
+.image-container:hover .gallery-image {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+.image-container:nth-child(2) .gallery-image {
+    animation-delay: 3s;
+}
+
+.image-container:nth-child(3) .gallery-image {
+    animation-delay: 6s;
+}
+
+/* Abogados Section */
+.lawyers-section {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Difuminado sutil de la imagen de fondo */
+.lawyers-section::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Capa oscura para mejorar legibilidad */
+.lawyers-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.lawyers-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.lawyers-section .section-title {
+    color: var(--white);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.lawyers-section .section-title::after {
+    background: var(--accent-light);
+}
+
+.lawyers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lawyer-card {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: rgba(128, 128, 128, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.lawyer-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 40px rgba(0, 102, 204, 0.15);
+}
+
+.lawyer-image {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.lawyer-card:hover .lawyer-image {
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.lawyer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(30%);
+    transition: var(--transition);
+}
+
+.lawyer-card:hover .lawyer-image img {
+    filter: grayscale(0%);
+}
+
+.lawyer-card h3 {
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.lawyer-card p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    font-weight: 300;
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Áreas Section */
+.areas-section {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Difuminado sutil de la imagen de fondo */
+.areas-section::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Capa oscura para mejorar legibilidad */
+.areas-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.areas-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.areas-section .section-title {
+    color: var(--white);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.areas-section .section-title::after {
+    background: var(--accent-light);
+}
+
+.areas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+@media (max-width: 968px) {
+    .areas-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .areas-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+.area-card {
+    background: rgba(128, 128, 128, 0.3);
+    padding: 2.5rem 2rem;
+    border-radius: 2px;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-top: 2px solid rgba(255, 255, 255, 0.6);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.area-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 192, 203, 0.15) 0%, rgba(255, 182, 193, 0.25) 100%);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+}
+
+.area-card:hover::before {
+    left: 0;
+}
+
+.area-card:hover {
+    transform: translateY(-8px);
+    border-color: #ffb6c1;
+    border-top-color: #ff69b4;
+    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.25);
+}
+
+.area-card h3 {
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.area-card p {
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.9;
+    font-weight: 300;
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8), 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Contactos Section */
+.contact-section {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Difuminado sutil de la imagen de fondo */
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Capa oscura para mejorar legibilidad */
+.contact-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.contact-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.contact-section .section-title {
+    color: var(--white);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.contact-section .section-title::after {
+    background: var(--accent-light);
+}
+
+.contact-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    margin-bottom: 3rem;
+}
+
+.contact-info h3 {
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.contact-info p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 300;
+    line-height: 1.9;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 2rem auto;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: 0;
+}
+
+.contact-btn:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.contact-btn:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    transition: var(--transition);
+    filter: none;
+}
+
+.contact-btn:hover .social-icon {
+    transform: scale(1.1);
+    filter: none;
+}
+
+.whatsapp-btn {
+    background: transparent;
+    border: 2px solid transparent;
+}
+
+.whatsapp-btn:hover {
+    background: rgba(37, 211, 102, 0.1);
+    border-color: #25D366;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+}
+
+.linkedin-btn {
+    background: transparent;
+    border: 2px solid transparent;
+}
+
+.linkedin-btn:hover {
+    background: rgba(0, 119, 181, 0.1);
+    border-color: #0077B5;
+    box-shadow: 0 8px 25px rgba(0, 119, 181, 0.3);
+}
+
+.instagram-btn {
+    background: transparent;
+    border: 2px solid transparent;
+}
+
+.instagram-btn:hover {
+    background: rgba(225, 48, 108, 0.1);
+    border-color: #E1306C;
+    box-shadow: 0 8px 25px rgba(225, 48, 108, 0.3);
+}
+
+.facebook-btn {
+    background: transparent;
+    border: 2px solid transparent;
+}
+
+.facebook-btn:hover {
+    background: rgba(24, 119, 242, 0.1);
+    border-color: #1877F2;
+    box-shadow: 0 8px 25px rgba(24, 119, 242, 0.3);
+}
+
+/* Footer Minimalista */
+.footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 4rem 2rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+}
+
+.footer-section p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.9;
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Animaciones Profesionales */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeInUpLetter {
+    from {
+        opacity: 0;
+        transform: translateY(30px) rotateX(90deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.gallery-image.animated {
+    animation: float 10s ease-in-out infinite;
+}
+
+/* Scrollbar personalizado minimalista */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 102, 204, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+        letter-spacing: 3px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+    }
+
+    .lawyers-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .areas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-buttons {
+        gap: 1.5rem;
+        justify-content: center;
+    }
+
+    .contact-btn {
+        width: 60px;
+        height: 60px;
+    }
+
+    .social-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .section {
+        padding: 4rem 1.5rem;
+    }
+
+    .menu-toggle {
+        top: 20px;
+        left: 20px;
+        padding: 10px 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+
+    .image-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .lawyers-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Efectos de transición suaves */
+.section {
+    opacity: 1;
+    transition: opacity 0.6s ease;
+}
+
+/* Utilidades adicionales */
+.text-lead {
+    color: var(--lead);
+}
+
+.text-primary {
+    color: var(--primary-color);
+}
+
+.text-accent {
+    color: var(--accent-color);
+}
+
+.bg-primary-soft {
+    background-color: var(--primary-soft);
+}
