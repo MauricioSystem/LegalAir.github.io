@@ -586,6 +586,20 @@ body.splash-active {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
+.lawyer-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.lawyer-link:hover {
+    transform: scale(1.02);
+}
+
 .lawyer-card:hover {
     transform: translateY(-8px);
     border-color: var(--accent-color);
