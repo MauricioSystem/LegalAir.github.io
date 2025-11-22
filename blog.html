@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://www.gstatic.com; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:;">
+    <meta name="google" content="notranslate">
+    <title>Blog - LEGAL AIR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-content">
+            <img src="Template/utils/logo1.jpeg" alt="LEGAL AIR Logo" class="splash-logo">
+        </div>
+    </div>
+
+    <!-- Navbar Lateral -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="Template/utils/logo1.jpeg" alt="LEGAL AIR Logo" class="logo-img">
+            <h2>LEGAL AIR</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="index.html" class="nav-link">Inicio</a></li>
+            <li><a href="map.html" class="nav-link">Mapa</a></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay oscuro -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Botón para abrir/cerrar sidebar -->
+    <button class="menu-toggle" id="menuToggle">☰</button>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <!-- Sección Blog -->
+        <section id="blog" class="section blog-section" style="background-image: url('Template/utils/hola1.jpeg');">
+            <div class="container">
+                <h2 class="section-title">Campo Laboral del Derecho Aeronáutico</h2>
+                <div class="blog-content">
+                    <div class="blog-text">
+                        <p>
+                            Cuando hablamos de derecho aeronáutico, nos referimos al derecho público y privado, aunque tiene origen nacional e internacional, pero inherentemente son parte desde el piloto hasta la infraestructura aeronáutica pero nos da muchas áreas de aplicación como ser:
+                        </p>
+                        
+                        <ul class="blog-list">
+                            <li>
+                                <strong>Infraestructura.</strong> – Regula la construcción y uso de aeropuertos, aeródromos y otras instalaciones
+                            </li>
+                            <li>
+                                <strong>Transporte aéreo.</strong> – este se ocupa de la contratación de vuelos, derechos de los pasajeros y la responsabilidad de la aerolínea.
+                            </li>
+                            <li>
+                                <strong>Seguridad operacional.</strong> – establece normas para la seguridad en vuelo, navegación y operaciones aéreas.
+                            </li>
+                            <li>
+                                <strong>Aspectos penales.</strong> – aborda los delitos penales cometidos en el ámbito aéreo, Ej: Tráfico de sustancias controladas.
+                            </li>
+                            <li>
+                                <strong>Aspectos laborales.</strong> – regula las relaciones laborales de cada empleador y funcionario del área aeronáutica.
+                            </li>
+                        </ul>
+
+                        <p>
+                            En ese sentido, el ámbito de aplicación de esta rama jurídica es muy amplia, claro esta que no tiene una legislación y aplicación propia, pero aunque puedan ser agrupadas e identificadas por su objeto aeronáutico, pertenecen a diversas ramas del Derecho, como el Derecho Administrativo (caso de las normas que regulan o autorizan la apertura de aeródromos, las licencias de vuelo o la imposición de sanciones), el Derecho Internacional Público (caso, por ejemplo, de las normas y organizaciones aeronáuticas derivadas de acuerdos internacionales), el Derecho Mercantil (al que se adscriben, por ejemplo, las normas que regulan el contrato de transporte aéreo), el Derecho Laboral (del que forman parte las normas sobre condiciones de trabajo de las tripulaciones) o el Derecho Penal (del que proceden las normas que determinan y reprueban los delitos aeronáuticos).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>LEGAL AIR</h3>
+                    <p>Somos un equipo especializado en brindar servicios legales de derecho aeronáutico, trámites, contratos, licencias y registros permisos a operadores aeronáuticos.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Blog</h4>
+                    <p>Información sobre el campo laboral y áreas de aplicación del derecho aeronáutico.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LEGAL AIR. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Scripts/splash-blog.js"></script>
+    <script src="Scripts/sidebar.js"></script>
+</body>
+</html>
+

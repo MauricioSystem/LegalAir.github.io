@@ -5,8 +5,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Navegación suave
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
             const targetId = link.getAttribute('href');
+            
+            // Si el enlace es externo (no comienza con #), permitir navegación normal
+            if (targetId && !targetId.startsWith('#')) {
+                // Cerrar sidebar antes de navegar
+                if (window.closeSidebar) {
+                    window.closeSidebar();
+                }
+                // Permitir que el navegador siga el enlace normalmente
+                return true;
+            }
+            
+            // Si es un enlace interno (comienza con #), interceptar
+            e.preventDefault();
             
             // Cerrar sidebar después de hacer click en un link
             if (window.closeSidebar) {

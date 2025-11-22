@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://maps.googleapis.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://www.gstatic.com https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https:; frame-src 'self' https://www.google.com https://maps.google.com;">
+    <meta name="google" content="notranslate">
+    <title>Mapa - LEGAL AIR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-content">
+            <img src="Template/utils/logo1.jpeg" alt="LEGAL AIR Logo" class="splash-logo">
+        </div>
+    </div>
+
+    <!-- Navbar Lateral -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="Template/utils/logo1.jpeg" alt="LEGAL AIR Logo" class="logo-img">
+            <h2>LEGAL AIR</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="index.html" class="nav-link">Inicio</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay oscuro -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Botón para abrir/cerrar sidebar -->
+    <button class="menu-toggle" id="menuToggle">☰</button>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <!-- Sección Mapa -->
+        <section id="mapa" class="section map-section">
+            <div class="container">
+                <h2 class="section-title">Nuestra Ubicación</h2>
+                <div class="map-content">
+                    <div class="map-container">
+                        <div class="map-iframe-wrapper">
+                            <iframe 
+                                src="https://www.google.com/maps?q=-17.797849,-63.176696&hl=es&z=17&output=embed"
+                                width="100%" 
+                                height="600" 
+                                style="border:0; border-radius: 8px;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Ubicación LEGAL AIR">
+                            </iframe>
+                            <a href="https://www.google.com/maps/place/17%C2%B047'52.3%22S+63%C2%B010'36.1%22W/@-17.797849,-63.176696,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-17.797849!4d-63.176696?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="map-overlay-link">
+                                <div class="map-overlay-text">
+                                    <p>📍 Haz clic aquí para abrir en Google Maps</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="map-link-container">
+                            <a href="https://www.google.com/maps/place/17%C2%B047'52.3%22S+63%C2%B010'36.1%22W/@-17.797849,-63.176696,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-17.797849!4d-63.176696?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="map-link-button">
+                                <span>📍</span> Abrir en Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>LEGAL AIR</h3>
+                    <p>Somos un equipo especializado en brindar servicios legales de derecho aeronáutico, trámites, contratos, licencias y registros permisos a operadores aeronáuticos.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Ubicación</h4>
+                    <p>Encuéntranos en nuestra oficina. Consulta el mapa para más detalles sobre cómo llegar.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LEGAL AIR. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Scripts/splash-blog.js"></script>
+    <script src="Scripts/sidebar.js"></script>
+</body>
+</html>
+
